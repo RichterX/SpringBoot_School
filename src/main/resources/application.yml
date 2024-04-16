@@ -6,7 +6,7 @@ spring:
       mode: never
   jpa:
     hibernate:
-      ddl-auto: update #Con update se crean las tablas si no existen y compara las entidades con las tablas. Si falta algún campo, lo añade.
+      ddl-auto: update #Con update se crean las tablas si no existen y compara las entidades con las tablas. Si falta algun campo, lo incorpora.
     open-in-view: false
     show-sql: true #Para ver las consultas SQL que se ejecutan en consola
     properties:
@@ -18,6 +18,9 @@ spring:
     console:
       enabled: true #Para que se pueda acceder a la consola de H2 (antes era active: true)
       path: /console #Ruta para acceder a la consola de H2
+
 server:
   servlet:
     context-path: /school #Para que las rutas (endpoints) empiecen por /school
+
+    #OJO no poner caracteres especiales ni acentos, ni siquiera en los comentarios o dara error.

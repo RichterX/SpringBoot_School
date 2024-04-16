@@ -16,7 +16,7 @@ spring:
     allow-circular-references: true #Para que no de error al tener referencias circulares en las entidades
   h2:
     console:
-      active: true #Para que se pueda acceder a la consola de H2
+      enabled: true #Para que se pueda acceder a la consola de H2 (antes era active: true)
       path: /console #Ruta para acceder a la consola de H2
 server:
   servlet:

@@ -3,39 +3,23 @@ package com.pedro.school.application.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class AlumnoSimpleDto implements Serializable
+public class CursoSimpleDto implements Serializable
 {
     private Long id;
     private String nombre;
+    public CursoSimpleDto() { }
 
-    public AlumnoSimpleDto() { }
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
-
-    public String getNombre()
-    {
-        return nombre;
-    }
-
-    public void setNombre(String nombre)
-    {
-        this.nombre = nombre;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
     @Override
     public boolean equals(Object o)
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AlumnoSimpleDto that = (AlumnoSimpleDto) o;
+        CursoSimpleDto that = (CursoSimpleDto) o;
         return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre);
     }
 
@@ -48,7 +32,7 @@ public class AlumnoSimpleDto implements Serializable
     @Override
     public String toString()
     {
-        return "AlumnoSimpleDto{" +
+        return "CursoSimpleDto{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 '}';

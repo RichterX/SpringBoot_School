@@ -57,4 +57,11 @@ public class AlumnoRestController
         List<CursoSimpleDto> cursoSimpleDtos = alumnoService.registrarAlumnoEnCurso(alumnoId, cursoSimpleDto);
         return new ResponseEntity<>(cursoSimpleDtos, HttpStatus.OK);
     }
+
+    @DeleteMapping(value= "/alumnos/{alumnoId}/cursos/{cursoId}")
+    public ResponseEntity<Void> eliminarCursoDeAlumno(@PathVariable Long alumnoId, @PathVariable Long cursoId)
+    {
+        alumnoService.eliminarCursoDeAlumno(alumnoId, cursoId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

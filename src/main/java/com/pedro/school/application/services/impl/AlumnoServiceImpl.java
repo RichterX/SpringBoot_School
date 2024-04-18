@@ -72,4 +72,15 @@ public class AlumnoServiceImpl implements AlumnoService
         alumnoDto = alumnoMapper.toDto(alumno);
         return alumnoDto.getCursos();
     }
+
+    @Override
+    @Transactional
+    public void eliminarCursoDeAlumno(Long alumnoId, Long cursoId)
+    {
+        Alumno alumno = alumnoRepository
+                .findById(alumnoId)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
+        alumno.eliminarCursoPorId(cursoId);
+        alumnoRepository.save(alumno);
+    }
 }

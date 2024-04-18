@@ -15,4 +15,6 @@ public interface AlumnoService
     void eliminarAlumnoPorId(Long id);
 
     List<CursoSimpleDto> registrarAlumnoEnCurso(Long alumnoId, CursoSimpleDto cursoSimpleDto);
+
+    void eliminarCursoDeAlumno(Long alumnoId, Long cursoId);
 }

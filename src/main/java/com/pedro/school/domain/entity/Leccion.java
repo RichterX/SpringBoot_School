@@ -1,6 +1,9 @@
 package com.pedro.school.domain.entity;
 
 import jakarta.persistence.*;
+
+import java.util.Set;
+
 @Entity
 @Table(name = "lecciones")
 public class Leccion
@@ -27,6 +30,12 @@ public class Leccion
     @ManyToOne
     @JoinColumn(name="profesor_id", nullable = false)
     private Profesor profesor;
+
+    @ManyToMany
+    @JoinTable(name = "lecciones_adjuntos",
+            joinColumns = @JoinColumn(name = "leccion_id"),
+            inverseJoinColumns = @JoinColumn(name = "adjunto_id"))
+    private Set<Adjunto> adjuntos;
 
     public Long getId()
     {
@@ -86,5 +95,15 @@ public class Leccion
     public void setProfesor(Profesor profesor)
     {
         this.profesor = profesor;
+    }
+
+    public Set<Adjunto> getAdjuntos()
+    {
+        return adjuntos;
+    }
+
+    public void setAdjuntos(Set<Adjunto> adjuntos)
+    {
+        this.adjuntos = adjuntos;
     }
 }

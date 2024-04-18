@@ -1,6 +1,7 @@
 package com.pedro.school.application.services.impl;
 
 import com.pedro.school.application.dto.AlumnoDto;
+import com.pedro.school.application.dto.CalificacionDto;
 import com.pedro.school.application.dto.CursoSimpleDto;
 import com.pedro.school.application.mapper.AlumnoMapper;
 import com.pedro.school.application.services.AlumnoService;
@@ -82,5 +83,16 @@ public class AlumnoServiceImpl implements AlumnoService
                 .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
         alumno.eliminarCursoPorId(cursoId);
         alumnoRepository.save(alumno);
+    }
+
+    @Override
+    public AlumnoDto anadirCalificacion(Long alumnoId, CalificacionDto calificacionDto)
+    {
+        AlumnoDto alumnoDto = obtenerAlumnoPorId(alumnoId)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
+
+        alumnoDto.getCalificaciones().add(calificacionDto);
+        Alumno alumno = alumnoRepository.save(alumnoMapper.toEntity(alumnoDto));
+        return alumnoMapper.toDto(alumno);
     }
 }

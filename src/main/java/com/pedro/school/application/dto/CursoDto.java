@@ -1,7 +1,5 @@
 package com.pedro.school.application.dto;
 
-import jakarta.persistence.Column;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;

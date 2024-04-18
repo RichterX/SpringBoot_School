@@ -28,6 +28,10 @@ public class Alumno
     ) //En el otro lado de la relación (clase Curso), le hacemos un mappedby = "cursos" con el mismo nombre de la variable
     private Set<Curso> cursos;
 
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL)
+    Set<Calificacion> calificaciones;
+
+
     public Long getId()
     {
         return id;
@@ -66,6 +70,16 @@ public class Alumno
     public void setCursos(Set<Curso> cursos)
     {
         this.cursos = cursos;
+    }
+
+    public Set<Calificacion> getCalificaciones()
+    {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(Set<Calificacion> calificaciones)
+    {
+        this.calificaciones = calificaciones;
     }
 
     public void eliminarCursoPorId(Long cursoId)

@@ -4,7 +4,7 @@ import com.pedro.school.application.dto.PreguntaDto;
 import com.pedro.school.domain.entity.Pregunta;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {CuestionarioMapper.class})
+@Mapper(componentModel = "spring")
 public interface PreguntaMapper extends EntityMapper<PreguntaDto, Pregunta>
 {
     default Pregunta fromId(Long id)

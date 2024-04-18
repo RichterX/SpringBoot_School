@@ -10,12 +10,12 @@ import java.util.Objects;
 public class PreguntaCuestionario
 {
     @EmbeddedId
-    private PreguntaCuestionarioKey id;
+    PreguntaCuestionarioKey id;
 
     @ManyToOne
     @MapsId("cuestionarioId")
     @JoinColumn(name = "cuestionario_id")
-    private Cuestionario cuestionario;
+    Cuestionario cuestionario;
 
     @ManyToOne
     @MapsId("preguntaId")

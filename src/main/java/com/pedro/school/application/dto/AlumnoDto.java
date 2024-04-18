@@ -11,6 +11,7 @@ public class AlumnoDto implements Serializable //Implementa Serializable para po
     private String nombre;
     private String url;
     private List<CursoSimpleDto> cursos;
+    private List<CalificacionDto> calificaciones;
 
 
     public AlumnoDto() { }
@@ -53,6 +54,16 @@ public class AlumnoDto implements Serializable //Implementa Serializable para po
     public void setCursos(List<CursoSimpleDto> cursos)
     {
         this.cursos = cursos;
+    }
+
+    public List<CalificacionDto> getCalificaciones()
+    {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(List<CalificacionDto> calificaciones)
+    {
+        this.calificaciones = calificaciones;
     }
 
     @Override

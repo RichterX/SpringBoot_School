@@ -3,6 +3,7 @@ package com.pedro.school.application.services.impl;
 import com.pedro.school.application.dto.PreguntaDto;
 import com.pedro.school.application.mapper.PreguntaMapper;
 import com.pedro.school.application.services.PreguntaService;
+import com.pedro.school.domain.entity.Cuestionario;
 import com.pedro.school.domain.entity.Pregunta;
 import com.pedro.school.infrastructure.repository.PreguntaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,15 +32,6 @@ public class PreguntaServiceImpl implements PreguntaService
     {
         List<Pregunta> preguntas = preguntaRepository.findAll();
         return preguntaMapper.toDto(preguntas);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<PreguntaDto> obtenerPregunta(Long preguntaId)
-    {
-        return preguntaRepository
-                .findById(preguntaId)
-                .map(pregunta -> preguntaMapper.toDto(pregunta));
     }
 
     @Override

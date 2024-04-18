@@ -7,6 +7,7 @@ public class CursoSimpleDto implements Serializable
 {
     private Long id;
     private String nombre;
+
     public CursoSimpleDto() { }
 
     public Long getId() { return id; }

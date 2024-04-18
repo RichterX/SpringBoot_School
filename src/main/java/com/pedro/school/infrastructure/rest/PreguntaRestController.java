@@ -28,7 +28,7 @@ public class PreguntaRestController
     }
 
     @GetMapping(value = "/preguntas/{preguntaId}", produces = "application/json")
-    public ResponseEntity<PreguntaDto> obtenerPregunta(@PathVariable Long preguntaId)
+    public ResponseEntity<PreguntaDto> obtenerPreguntaPorId(@PathVariable Long preguntaId)
     {
         return preguntaService
                 .obtenerPreguntaPorId(preguntaId)

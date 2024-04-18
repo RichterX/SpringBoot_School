@@ -9,8 +9,8 @@ import java.util.Objects;
 public class CuestionarioDto implements Serializable
 {
     private Long id;
-    private Integer notaMinima;
     private String titulo;
+    private Integer notaMinima;
     private List<PreguntaCuestionarioDto> preguntas;
 
     public CuestionarioDto() { }

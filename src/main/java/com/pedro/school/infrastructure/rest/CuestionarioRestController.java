@@ -29,7 +29,7 @@ public class CuestionarioRestController
     }
 
     @GetMapping(value = "/cuestionarios/{cuestionarioId}", produces = "application/json")
-    public ResponseEntity<CuestionarioDto> obtenerCuestionario(@PathVariable Long cuestionarioId)
+    public ResponseEntity<CuestionarioDto> obtenerCuestionarioPorId(@PathVariable Long cuestionarioId)
     {
         return cuestionarioService
                 .obtenerCuestionarioPorId(cuestionarioId)

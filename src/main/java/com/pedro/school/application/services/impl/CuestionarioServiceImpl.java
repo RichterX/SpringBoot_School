@@ -35,15 +35,6 @@ public class CuestionarioServiceImpl implements CuestionarioService
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Optional<CuestionarioDto> obtenerCuestionario(Long cuestionarioId)
-    {
-        return cuestionarioRepository
-                .findById(cuestionarioId)
-                .map(cuestionario -> cuestionarioMapper.toDto(cuestionario));
-    }
-
-    @Override
     @Transactional
     public CuestionarioDto crearCuestionario(CuestionarioDto cuestionarioDto)
     {

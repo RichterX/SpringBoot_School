@@ -3,18 +3,20 @@ package com.pedro.school.domain.key;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
+
+
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class PreguntaCuestionarioKey implements Serializable
 {
-    private static final long serialVersionUID = -1822620556182692474L;
+    //private static final long serialVersionUID = -1822620556182692474L;
 
-    @Column(name="cuestionario_id")
+    @Column(name = "cuestionario_id")
     private Long cuestionarioId;
 
-    @Column(name="pregunta_id")
+    @Column(name = "pregunta_id")
     private Long preguntaId;
 
 
@@ -40,13 +42,14 @@ public class PreguntaCuestionarioKey implements Serializable
         this.preguntaId = preguntaId;
     }
 
+    //Estos métodos son obligatorios para un objeto embeddable
     @Override
     public boolean equals(Object o)
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PreguntaCuestionarioKey that = (PreguntaCuestionarioKey) o;
-        return Objects.equals(cuestionarioId, that.cuestionarioId) && Objects.equals(preguntaId, that.preguntaId);
+        return cuestionarioId.equals(that.cuestionarioId) && preguntaId.equals(that.preguntaId);
     }
 
     @Override

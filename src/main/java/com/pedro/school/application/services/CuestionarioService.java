@@ -10,7 +10,6 @@ import java.util.Optional;
 public interface CuestionarioService
 {
     List<CuestionarioDto> obtenerCuestionarios();
-    Optional<CuestionarioDto> obtenerCuestionario(Long cuestionarioId);
     CuestionarioDto crearCuestionario (CuestionarioDto cuestionarioDto);
 
     Optional<CuestionarioDto> obtenerCuestionarioPorId(Long cuestionarioId);

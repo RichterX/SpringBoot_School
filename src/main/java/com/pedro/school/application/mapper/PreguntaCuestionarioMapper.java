@@ -11,8 +11,10 @@ public interface PreguntaCuestionarioMapper extends EntityMapper<PreguntaCuestio
 {
 
     @Override
+    @Mapping(source="cuestionarioId", target="id.cuestionarioId")
     @Mapping(source="cuestionarioId", target="cuestionario")
     @Mapping(source="preguntaId", target="pregunta")
+    @Mapping(source = "preguntaId", target = "id.preguntaId")
     PreguntaCuestionario toEntity(PreguntaCuestionarioDto dto);
 
     @Override

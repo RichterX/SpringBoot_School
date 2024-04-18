@@ -13,6 +13,8 @@ public class CursoDto implements Serializable
     private String resumen;
     List<LeccionDto> lecciones;
 
+    List<AlumnoSimpleDto> alumnos; //Para evitar las referencias circulares
+
     public CursoDto()
     {
 
@@ -56,6 +58,16 @@ public class CursoDto implements Serializable
     public void setLecciones(List<LeccionDto> lecciones)
     {
         this.lecciones = lecciones;
+    }
+
+    public List<AlumnoSimpleDto> getAlumnos()
+    {
+        return alumnos;
+    }
+
+    public void setAlumnos(List<AlumnoSimpleDto> alumnos)
+    {
+        this.alumnos = alumnos;
     }
 
     @Override

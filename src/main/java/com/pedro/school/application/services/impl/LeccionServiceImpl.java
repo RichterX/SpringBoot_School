@@ -1,5 +1,6 @@
 package com.pedro.school.application.services.impl;
 
+import com.pedro.school.application.dto.AdjuntoDto;
 import com.pedro.school.application.dto.LeccionDto;
 import com.pedro.school.application.mapper.LeccionMapper;
 import com.pedro.school.application.services.LeccionService;
@@ -49,5 +50,18 @@ public class LeccionServiceImpl implements LeccionService
         return leccionRepository
                 .findOneByIdAndCurso_Id(leccionId, cursoId)
                 .map(leccionMapper::toDto);
+    }
+
+    @Override
+    @Transactional
+    public List<AdjuntoDto> adjuntarFichero(Long cursoId, Long leccionId, AdjuntoDto adjuntoDto)
+    {
+        LeccionDto leccionDto = obtenerLeccionDeUnCurso(cursoId, leccionId)
+                .orElseThrow(() -> new RuntimeException("Lección no encontrada"));
+
+        leccionDto.getAdjuntos().add(adjuntoDto);
+        Leccion leccion =leccionRepository.save(leccionMapper.toEntity(leccionDto));
+        leccionDto = leccionMapper.toDto(leccion);
+        return leccionDto.getAdjuntos();
     }
 }

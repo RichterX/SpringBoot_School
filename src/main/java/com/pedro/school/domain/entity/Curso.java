@@ -65,7 +65,24 @@ public class Curso
     {
         this.lecciones = lecciones;
         this.lecciones.forEach(leccion -> leccion.setCurso(this));
-            
+    }
 
+    public Set<Alumno> getAlumnos()
+    {
+        return alumnos;
+    }
+
+    public void setAlumnos(Set<Alumno> alumnos)
+    {
+        this.alumnos = alumnos;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass() || id == null) return false;
+        Curso curso = (Curso) o;
+        return id.equals(curso.id);
     }
 }

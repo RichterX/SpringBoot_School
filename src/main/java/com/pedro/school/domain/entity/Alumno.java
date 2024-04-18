@@ -67,4 +67,17 @@ public class Alumno
     {
         this.cursos = cursos;
     }
+
+    public void eliminarCursoPorId(Long cursoId)
+    {
+        if (cursoId == null) return;
+        for (Curso c : this.getCursos())
+        {
+            if(cursoId.equals(c.getId()))
+            {
+                this.cursos.remove(c);
+                break;
+            }
+        }
+    }
 }

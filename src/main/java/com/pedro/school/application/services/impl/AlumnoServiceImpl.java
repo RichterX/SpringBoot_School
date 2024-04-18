@@ -1,8 +1,10 @@
 package com.pedro.school.application.services.impl;
 
 import com.pedro.school.application.dto.AlumnoDto;
+import com.pedro.school.application.dto.CursoSimpleDto;
 import com.pedro.school.application.mapper.AlumnoMapper;
 import com.pedro.school.application.services.AlumnoService;
+import com.pedro.school.domain.entity.Alumno;
 import com.pedro.school.infrastructure.repository.AlumnoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +51,36 @@ public class AlumnoServiceImpl implements AlumnoService
         var alumno = alumnoMapper.toEntity(alumnoDto);
         alumno = alumnoRepository.save(alumno);
         return alumnoMapper.toDto(alumno);
+    }
+
+    @Override
+    public void eliminarAlumnoPorId(Long alumnoId)
+    {
+        alumnoRepository.deleteById(alumnoId);
+    }
+
+    @Override
+    @Transactional
+    public List<CursoSimpleDto> registrarAlumnoEnCurso(Long alumnoId, CursoSimpleDto cursoSimpleDto)
+    {
+        AlumnoDto alumnoDto = obtenerAlumnoPorId(alumnoId)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
+
+        alumnoDto.getCursos().add(cursoSimpleDto);
+        Alumno alumno = alumnoRepository.save(alumnoMapper.toEntity(alumnoDto));
+
+        alumnoDto = alumnoMapper.toDto(alumno);
+        return alumnoDto.getCursos();
+    }
+
+    @Override
+    @Transactional
+    public void eliminarCursoDeAlumno(Long alumnoId, Long cursoId)
+    {
+        Alumno alumno = alumnoRepository
+                .findById(alumnoId)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
+        alumno.eliminarCursoPorId(cursoId);
+        alumnoRepository.save(alumno);
     }
 }

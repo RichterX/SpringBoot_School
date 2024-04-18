@@ -1,6 +1,7 @@
 package com.pedro.school.application.dto;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class AlumnoDto implements Serializable //Implementa Serializable para poder serializar el objeto de Json a Dto
@@ -9,12 +10,10 @@ public class AlumnoDto implements Serializable //Implementa Serializable para po
     private Long id;
     private String nombre;
     private String url;
+    private List<CursoSimpleDto> cursos;
 
 
-    public AlumnoDto()
-    {
-
-    }
+    public AlumnoDto() { }
 
     public Long getId()
     {
@@ -44,6 +43,16 @@ public class AlumnoDto implements Serializable //Implementa Serializable para po
     public void setUrl(String url)
     {
         this.url = url;
+    }
+
+    public List<CursoSimpleDto> getCursos()
+    {
+        return cursos;
+    }
+
+    public void setCursos(List<CursoSimpleDto> cursos)
+    {
+        this.cursos = cursos;
     }
 
     @Override

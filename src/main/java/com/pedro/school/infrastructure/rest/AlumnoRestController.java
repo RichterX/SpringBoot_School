@@ -1,6 +1,7 @@
 package com.pedro.school.infrastructure.rest;
 
 import com.pedro.school.application.dto.AlumnoDto;
+import com.pedro.school.application.dto.CursoSimpleDto;
 import com.pedro.school.application.services.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,5 +42,26 @@ public class AlumnoRestController
     {
         alumnoDto = alumnoService.crearAlumno(alumnoDto);
         return new ResponseEntity<>(alumnoDto, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "/alumnos/{alumnoId}")
+    public ResponseEntity<Void> borrarAlumnoPorId(@PathVariable Long alumnoId)
+    {
+        alumnoService.eliminarAlumnoPorId(alumnoId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping(value = "/alumnos/{alumnoId}/cursos", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<CursoSimpleDto>> registrarAlumnoEnCurso(@PathVariable Long alumnoId, @RequestBody CursoSimpleDto cursoSimpleDto)
+    {
+        List<CursoSimpleDto> cursoSimpleDtos = alumnoService.registrarAlumnoEnCurso(alumnoId, cursoSimpleDto);
+        return new ResponseEntity<>(cursoSimpleDtos, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value= "/alumnos/{alumnoId}/cursos/{cursoId}")
+    public ResponseEntity<Void> eliminarCursoDeAlumno(@PathVariable Long alumnoId, @PathVariable Long cursoId)
+    {
+        alumnoService.eliminarCursoDeAlumno(alumnoId, cursoId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
